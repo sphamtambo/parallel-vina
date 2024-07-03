@@ -1,33 +1,31 @@
 #!/usr/bin/env bash
 
-mkdir -p Output
-mkdir -p ProcessedLigand
+# Working directory
+WDIR=$(pwd)
 
-run_vina() {
-	local file=$1
-	local tmp=${file%.pdbqt}
-	local name="${tmp##*/}"
-	./Vina/vina --config ./Vina/conf.txt \
-		--ligand "$file" \
-		--out "./Output/${name}.pdbqt.pdbqt" \
-		--log "./Output/${name}.txt"
-}
+# Number of jobs per node
+JOBS_PER_NODE=4 # Adjust this according to your needs
 
-export -f run_vina
+# Source the run_vina function
+source "$WDIR"/processLigands.bash
 
+# Run the application using GNU Parallel
+echo "Parallel-Vina is running..."
+find ./Ligand -type f -name '*.pdbqt' >input.lst
+
+#	--slf "$PBS_NODEFILE" \
 # Run the application.
 echo "Parallel-Vina is running..."
-find ./Ligand -type f -name '*.pdbqt' | parallel --joblog job.log --resume run_vina >Output/ParallelVina.log
-
-# use the following when using PBS to access all allocated nodes and processes
-# NP=$(cat ${PBS_NODEFILE} | wc -l)
-# find ./Ligand -type f -name '*.pdbqt' | parallel -j "$NP" --joblog Output/job.log --resume run_vina >Output/ParallelVina.log
+parallel --progress \
+	--joblog Output/job.log \
+	--resume \
+	-j $JOBS_PER_NODE \
+	"source $WDIR/processLigands.bash; run_vina {}" :::: input.lst >Output/ParallelVina.log
 
 echo "Processing has finished."
 echo "See the ParallelVina.log file."
 
 echo "Analyzing the results..."
-mv job.log ./Output
 cd Output
 awk '/^[-+]+$/{getline; print FILENAME, $2}' *.txt | sed 's/\.\/Output\///' | sed 's/\.txt//' >result
 echo "See the 'result' file in the 'Output' directory."

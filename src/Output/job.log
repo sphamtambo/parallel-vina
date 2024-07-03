@@ -1,21 +1,21 @@
 Seq	Host	Starttime	JobRuntime	Send	Receive	Exitval	Signal	Command
-5	:	1719956764.818	    39.013	0	1832	0	0	run_vina ./Ligand/ZINC00058003.pdbqt
-4	:	1719956764.814	    43.547	0	1833	0	0	run_vina ./Ligand/ZINC00058004.pdbqt
-8	:	1719956764.831	   156.998	0	1834	0	0	run_vina ./Ligand/ZINC08396552.pdbqt
-2	:	1719956764.807	   162.672	0	1834	0	0	run_vina ./Ligand/ZINC08397597.pdbqt
-3	:	1719956764.809	   171.217	0	1832	0	0	run_vina ./Ligand/ZINC08397804.pdbqt
-7	:	1719956764.824	   178.147	0	1833	0	0	run_vina ./Ligand/ZINC08385504.pdbqt
-6	:	1719956764.821	   181.520	0	1833	0	0	run_vina ./Ligand/ZINC08396347.pdbqt
-1	:	1719956764.804	   188.424	0	1833	0	0	run_vina ./Ligand/ZINC08385500.pdbqt
-9	:	1719956803.838	   150.652	0	1833	0	0	run_vina ./Ligand/ZINC08386533.pdbqt
-10	:	1719956808.374	   160.109	0	1833	0	0	run_vina ./Ligand/ZINC08397924.pdbqt
-14	:	1719956942.989	    45.914	0	1834	0	0	run_vina ./Ligand/ZINC00058002.pdbqt
-15	:	1719956946.352	    55.056	0	1833	0	0	run_vina ./Ligand/ZINC00058001.pdbqt
-17	:	1719956954.502	    48.194	0	1834	0	0	run_vina ./Ligand/ZINC00058005.pdbqt
-11	:	1719956921.848	   148.684	0	1832	0	0	run_vina ./Ligand/ZINC08395997.pdbqt
-12	:	1719956927.489	   145.062	0	1833	0	0	run_vina ./Ligand/ZINC08396964.pdbqt
-13	:	1719956936.037	   144.585	0	1834	0	0	run_vina ./Ligand/ZINC08397522.pdbqt
-16	:	1719956953.240	   138.394	0	1834	0	0	run_vina ./Ligand/ZINC08396134.pdbqt
-20	:	1719957001.419	   104.338	0	1832	0	0	run_vina ./Ligand/ZINC08396506.pdbqt
-18	:	1719956968.496	   138.001	0	1833	0	0	run_vina ./Ligand/ZINC08397697.pdbqt
-19	:	1719956988.919	   119.989	0	1832	0	0	run_vina ./Ligand/ZINC08397250.pdbqt
+4	:	1720036203.025	    29.953	0	1832	0	0	source /home/sphalo/Documents/projects/parallel-vina/src/processLigands.bash; run_vina ./Ligand/ZINC00058004.pdbqt
+1	:	1720036203.018	    53.800	0	1834	0	0	source /home/sphalo/Documents/projects/parallel-vina/src/processLigands.bash; run_vina ./Ligand/ZINC08385500.pdbqt
+3	:	1720036203.023	    67.917	0	1833	0	0	source /home/sphalo/Documents/projects/parallel-vina/src/processLigands.bash; run_vina ./Ligand/ZINC08397804.pdbqt
+5	:	1720036232.996	    42.616	0	1833	0	0	source /home/sphalo/Documents/projects/parallel-vina/src/processLigands.bash; run_vina ./Ligand/ZINC00058003.pdbqt
+2	:	1720036203.020	    74.631	0	1834	0	0	source /home/sphalo/Documents/projects/parallel-vina/src/processLigands.bash; run_vina ./Ligand/ZINC08397597.pdbqt
+6	:	1720036256.826	    69.888	0	1833	0	0	source /home/sphalo/Documents/projects/parallel-vina/src/processLigands.bash; run_vina ./Ligand/ZINC08396347.pdbqt
+7	:	1720036270.948	    86.166	0	1833	0	0	source /home/sphalo/Documents/projects/parallel-vina/src/processLigands.bash; run_vina ./Ligand/ZINC08385504.pdbqt
+9	:	1720036277.657	    82.059	0	1833	0	0	source /home/sphalo/Documents/projects/parallel-vina/src/processLigands.bash; run_vina ./Ligand/ZINC08386533.pdbqt
+8	:	1720036275.628	   103.496	0	1832	0	0	source /home/sphalo/Documents/projects/parallel-vina/src/processLigands.bash; run_vina ./Ligand/ZINC08396552.pdbqt
+10	:	1720036326.729	    61.622	0	1833	0	0	source /home/sphalo/Documents/projects/parallel-vina/src/processLigands.bash; run_vina ./Ligand/ZINC08397924.pdbqt
+12	:	1720036359.733	    76.447	0	1834	0	0	source /home/sphalo/Documents/projects/parallel-vina/src/processLigands.bash; run_vina ./Ligand/ZINC08396964.pdbqt
+14	:	1720036388.357	    49.403	0	1833	0	0	source /home/sphalo/Documents/projects/parallel-vina/src/processLigands.bash; run_vina ./Ligand/ZINC00058002.pdbqt
+11	:	1720036357.126	    82.574	0	1833	0	0	source /home/sphalo/Documents/projects/parallel-vina/src/processLigands.bash; run_vina ./Ligand/ZINC08395997.pdbqt
+13	:	1720036379.141	    71.047	0	1833	0	0	source /home/sphalo/Documents/projects/parallel-vina/src/processLigands.bash; run_vina ./Ligand/ZINC08397522.pdbqt
+17	:	1720036439.712	    24.134	0	1832	0	0	source /home/sphalo/Documents/projects/parallel-vina/src/processLigands.bash; run_vina ./Ligand/ZINC00058005.pdbqt
+15	:	1720036436.197	    29.244	0	1833	0	0	source /home/sphalo/Documents/projects/parallel-vina/src/processLigands.bash; run_vina ./Ligand/ZINC00058001.pdbqt
+16	:	1720036437.769	    61.810	0	1832	0	0	source /home/sphalo/Documents/projects/parallel-vina/src/processLigands.bash; run_vina ./Ligand/ZINC08396134.pdbqt
+18	:	1720036450.195	    65.628	0	1832	0	0	source /home/sphalo/Documents/projects/parallel-vina/src/processLigands.bash; run_vina ./Ligand/ZINC08397697.pdbqt
+20	:	1720036465.446	    78.743	0	1834	0	0	source /home/sphalo/Documents/projects/parallel-vina/src/processLigands.bash; run_vina ./Ligand/ZINC08396506.pdbqt
+19	:	1720036463.859	    80.403	0	1833	0	0	source /home/sphalo/Documents/projects/parallel-vina/src/processLigands.bash; run_vina ./Ligand/ZINC08397250.pdbqt
