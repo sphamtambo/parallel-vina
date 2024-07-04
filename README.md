@@ -17,7 +17,7 @@ GNU Parallel (can be installed via package managers like apt, yum, or brew).
 1. Convert your target receptor (i.e., protein) and all ligands into _pdbqt format_ format (using any traditional tools).
 2. Put all the ligand files in the `Ligand` directory.
 3. Put your configuration file (`conf.txt`) and target receptor in the `src` directory.
-4. Adjust `JOBS_PER_NODE` according to your neends in the `runParallelVINA.bash` file.
+4. Adjust `JOBS_PER_NODE` according to your needs in the `runParallelVINA.bash` file.
 5. When using a PBS scheduler, add the `--slf $PBS_NODEFILE` flag in `runParallelVINA.bash` file to access all allocated nodes, otherwise run as defualt.
 6. To run the program type `./runParallelVINA.bash` in CLI.
 7. All output files are placed in the `Output` directory.
@@ -25,6 +25,8 @@ GNU Parallel (can be installed via package managers like apt, yum, or brew).
    - `ParallelVINA.log` file contains summary of the parallel procesing.
    - `SortedResult` file contains _binding affinity_ of all ligands in sorted order.
    - `<ligand_name>.pdbqt.pdbqt` & `<ligand_name>.pdbqt.txt` files contain the detailed result of individual ligand.
+8. The `ProcessedLigand` directory contains;
+   - `<ligand_name>.pdbqt` files of individual ligands.
 
 ## Acknowledgement
 
