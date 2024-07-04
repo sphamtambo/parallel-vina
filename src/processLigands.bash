@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-mkdir -p Output
-mkdir -p ProcessedLigand
-
 run_vina() {
 	local file=$1
 	local tmp=${file%.pdbqt}

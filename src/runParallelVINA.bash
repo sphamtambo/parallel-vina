@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+mkdir -p Output
+mkdir -p ProcessedLigand
+
 # Working directory
 WDIR=$(pwd)
 
@@ -7,19 +10,20 @@ WDIR=$(pwd)
 JOBS_PER_NODE=4 # Adjust this according to your needs
 
 # Source the run_vina function
-source "$WDIR"/processLigands.bash
+source $WDIR/processLigands.bash
 
 # Run the application using GNU Parallel
 echo "Parallel-Vina is running..."
 find ./Ligand -type f -name '*.pdbqt' >input.lst
 
-#	--slf "$PBS_NODEFILE" \
 # Run the application.
+#	--slf "$PBS_NODEFILE" \
 echo "Parallel-Vina is running..."
 parallel --progress \
 	--joblog Output/job.log \
 	--resume \
-	-j $JOBS_PER_NODE \
+	--jobs $JOBS_PER_NODE \
+	--workdir $WDIR \
 	"source $WDIR/processLigands.bash; run_vina {}" :::: input.lst >Output/ParallelVina.log
 
 echo "Processing has finished."
