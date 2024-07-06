@@ -18,12 +18,14 @@ find ./Ligand -type f -name '*.pdbqt' >input.lst
 
 # Run the application.
 #	--slf "$PBS_NODEFILE" \
-echo "Parallel-Vina is running..."
+# --resume-failed \
 parallel --progress \
 	--joblog Output/job.log \
 	--resume \
 	--jobs $JOBS_PER_NODE \
 	--workdir $WDIR \
+	-u \
+	-M \
 	"source $WDIR/processLigands.bash; run_vina {}" :::: input.lst >Output/ParallelVina.log
 
 echo "Processing has finished."
@@ -38,10 +40,13 @@ echo "Sorting the results..."
 sort -k 2,2n result >SortedResult
 echo "See the 'SortedResult' file in the 'Output' directory."
 
+# echo "Processing the docking outputs..."
+# while read -r line; do
+# 	ligand=$(echo "$line" | awk '{print $1}')
+# 	cp "./${ligand}.pdbqt.pdbqt" "../ProcessedLigand/${ligand}.pdbqt"
+# done <SortedResult
+
 echo "Processing the docking outputs..."
-while read -r line; do
-	ligand=$(echo "$line" | awk '{print $1}')
-	cp "./${ligand}.pdbqt.pdbqt" "../ProcessedLigand/${ligand}.pdbqt"
-done <SortedResult
+parallel --colsep ' ' 'cp ./{1}.pdbqt.pdbqt ../ProcessedLigand/{1}.pdbqt' :::: SortedResult
 
 echo "See the 'ProcessedLigand' directory."
