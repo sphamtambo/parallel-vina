@@ -1,0 +1,53 @@
+#!/bin/bash
+#PBS -N ParallelVina
+#PBS -l select=3:ncpus=24:mpiprocs=24
+#PBS -l walltime=04:00:00
+#PBS -q normal
+#PBS -m abe
+#PBS -M your.email@domain.com
+#PBS -o ParallelVina.out
+#PBS -e ParallelVina.out
+
+# Change to the directory where the job was submitted
+cd $PBS_O_WORKDIR
+
+# Print job information
+echo "Job ID: $PBS_JOBID"
+echo "Job Name: $PBS_JOBNAME"
+echo "Working directory: $PBS_O_WORKDIR"
+echo "Started at: $(date)"
+echo "Running on node: $(hostname)"
+echo "Number of CPUs: $NCPUS"
+
+# Load required modules (adjust according to your cluster setup)
+# module load parallel
+module load chpc/gnu/parallel-20180622
+
+# Set environment variables
+export OMP_NUM_THREADS=1  # Prevent threading conflicts with parallel
+
+# Make the main script executable
+chmod +x ./runParallelVina.bash
+
+# Run the main parallel vina script
+echo "Starting Parallel Vina execution..."
+./runParallelVina.bash
+
+# Check if the job completed successfully
+if [ $? -eq 0 ]; then
+    echo "Job completed successfully at: $(date)"
+else
+    echo "Job failed at: $(date)"
+    exit 1
+fi
+
+# Print summary information
+echo "Job Summary:"
+echo "============"
+if [ -f "Output/SortedResult" ]; then
+    echo "Number of ligands processed: $(wc -l < Output/SortedResult)"
+    echo "Top 3 results:"
+    head -3 Output/SortedResult
+fi
+
+echo "Job finished at: $(date)"
