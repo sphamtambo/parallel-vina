@@ -24,7 +24,7 @@ GNU Parallel (can be installed via package managers like apt, yum, or brew).
 
 3. **Running the Program**:
 
-   - Run the script by typing `./runParallelVINA.bash` in the command line.
+   - Run the script by either typing `./runParallelVINA.bash` in the command line or submitting the `submit_vina_job.pbs` file via qsub.
 
 4. **Output Files**:
 
